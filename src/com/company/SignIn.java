@@ -43,11 +43,11 @@ public class SignIn {
         if (login.length() > 20 || Pattern.matches("[а-яА-Я]+", login)) {
             System.out.println(login + "= " + false);
             throw new WrongLoginException();
-        } else if (password.length() > 20 || !password.equals(confirmPassword) || Pattern.matches("[а-яА-Я]+", password)) {
+        } else if (password.length() > 20 || Pattern.matches("[а-яА-Я]+", password)) {
             System.out.println("password " + password + "= " + false);
 
             throw new WrongPasswordException();
-        } else if (Pattern.matches("[а-яА-Я]+", confirmPassword)) {
+        } else if (!confirmPassword.equals(password) || Pattern.matches("[а-яА-Я]+", confirmPassword)) {
             System.out.println("confirm_password " + confirmPassword + "= " + false);
             throw new WrongConfirmPasswordException();
 
